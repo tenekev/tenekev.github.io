@@ -13,7 +13,7 @@ thumb:
 
 # S.M.A.R.T. Monitoring with Scrutiny across machines
 
-### he problem 🤔
+### The problem 🤔
 Scrutiny offers a nice Docker package called "Omnibus" that can monitor HDDs attached to a Docker host with relative ease. Scrutiny can also be installed in a Hub-Spoke layout where Web interface, Database and Collector come in 3 separate packages. The official documentation assumes that the spokes in the "Hub-Spokes layout" run Docker, which is not always the case. The third approach is to install Scrutiny manually, entirely outside of Docker.
 
 ### The solution 💡
