@@ -3,7 +3,7 @@ title: How to set up your own DNS for a whole Tailscale network
 date: 2023-03-03 11:58:00 +300
 categories: [homelab, networking, tutorial]
 tags: [tailscale,adguard,pihole,dns,vpn,wireguard,adblock,proxmox]
-img_path: posts/2023-03-03-internal-dns-for-your-tailscale-network/
+img_path: /posts/2023-03-03-internal-dns-for-your-tailscale-network/
 image:
   path: drawing-3-1671877554.png
   alt: Article Header
@@ -26,8 +26,7 @@ image:
 
 The trick here is to **do everything in the proper order** and make AdGuard listen to the correct interface for DNS requests. By default it tries to listen to all interfaces. However some of them (Like 0.0.0.0:53) might be already occupied. To finish the **Setup** you will be forced to use only one interface from the dropdown. Guaranteed, that won't be the Tailscale interface. It means that even if you connect AdGuard to your Tailnet and set it as the DNS, no queries will be answered.
 
-[![image.png](u3Dimage.png)](u3Dimage.png)
-
+![image.png](u3Dimage.png)
 
 ### Step 1: Install AdGuard with [TTeck's scrips](https://github.com/tteck/Proxmox). 
 
@@ -39,7 +38,7 @@ bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/ct/adguard-v3.s
 
 Select the advanced settings and specify **CT ID, Static IP with CIRD of /32 and the Gateway**.
 
-[![image.png](Cknimage.png)](Cknimage.png)
+![image.png](Cknimage.png)
 
 > ⚠️ Wait for AdGuard to install but **DO NOT** proceed with the Setup process at http://192.168.0.40:3000 yet!
 
@@ -51,7 +50,7 @@ Immediately install the Tailscale client in the AdGuard container. Again, use yo
 bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/misc/add-tailscale-lxc.sh)" -s 400
 ```
 
-[![image.png](eapimage.png)](eapimage.png)
+![image.png](eapimage.png)
 
 As instructed, reboot the container.
 
@@ -79,7 +78,7 @@ Now is the time to finish setting up AdGuard. Go to **http://192.168.0.40:3000**
 
 From the drop down you should see a new interface - **tailscale0**
 
-[![image.png](r1Kimage.png)](r1Kimage.png)
+![image.png](r1Kimage.png)
 
 After this key step, everything else can be done as if you are setting up AdGuard normally. Proceed with user registration and so on.
 
@@ -142,22 +141,22 @@ When you login in your [Tailscale Dashboard](https://login.tailscale.com/admin/m
 
 In the **DNS** Tab, under **Nameservers**, click **Add Nameserver** and choose **Custom...** Paste your AdGuard IP in the field.
 
-[![image.png](BUEimage.png)](BUEimage.png)
+![image.png](BUEimage.png)
 
 <p class="callout warning">To make sure **your\_domain.com** is resolved by your DNS server <span style="text-decoration: underline;"><span style="color: #000000; text-decoration: underline;">every time</span></span>, we want to force all of the traffic through the Tailnet. </p>
 
-[![image.png](AR5image.png)](AR5image.png)
+![image.png](AR5image.png)
 
 Now, you might have noticed that there is an option called "Split DNS". If you enable it for **your\_domain.com** and go to **google.com**, Tailscale will not use your DNS to resolve it. It will only use it for **your\_domain.com.** But there lies a problem. You cannot have a "Split DNS" that resolves just one domain and "Override local DNS" because no other domain will be resolvable. Tailscale does not allow you to do that. If you want to enable "Split DNS", you have to provide at least one more DNS server - like Cloudflare's 1.1.1.1.
 
 #### Setting up DNS Rewrites in AdGuard
 
-[![image.png](141image.png)](141image.png)
+![image.png](141image.png)
 
 Creating DNS rewrites in AdGuard is straightforward - go to the dashboard, then go to **Filters &gt; DNS Rewrite.** As I mentioned, we are working within the Tailscale network and therefore we are using Tailnet IPs. Take note of the server IP ("docker" in this case). It's **100.84.51.113**
 
 You have to add two records. The first one is for **your\_domain.com**, the second one is to point ANY subdomain of your **your\_domain.com** to the server with Wildcard (\*) symbol.
 
-[![image.png](ft6image.png)](ft6image.png)
+![image.png](ft6image.png)
 
 Additionally, you can add whatever blocklists you want, in order to use AdGuard for its intended purpose - ad-blocking but within the Tailnet.
