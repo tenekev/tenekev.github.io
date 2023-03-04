@@ -7,7 +7,7 @@ tags: [tailscale,adguard,pihole,dns,vpn,wireguard,adblock,proxmox]
 
 # Setting up Internal DNS
 
-[![image.png](https://docs.lan.tenekev.art/uploads/images/drawio/2022-12/drawing-3-1671877554.png)](https://docs.lan.tenekev.art/uploads/images/drawio/2022-12/drawing-3-1671877554.png)
+[![image.png](/assets/img/posts/drawing-3-1671877554.png)](/assets/img/posts/drawing-3-1671877554.png)
 
 #### 📝 Notes:
 
@@ -24,7 +24,7 @@ tags: [tailscale,adguard,pihole,dns,vpn,wireguard,adblock,proxmox]
 
 The trick here is to **do everything in the proper order** and make AdGuard listen to the correct interface for DNS requests. By default it tries to listen to all interfaces. However some of them (Like 0.0.0.0:53) might be already occupied. To finish the **Setup** you will be forced to use only one interface from the dropdown. Guaranteed, that won't be the Tailscale interface. It means that even if you connect AdGuard to your Tailnet and set it as the DNS, no queries will be answered.
 
-[![image.png](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/scaled-1680-/u3Dimage.png)](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/u3Dimage.png)
+[![image.png](/assets/img/posts/u3Dimage.png)](/assets/img/posts/u3Dimage.png)
 
 
 ### Step 1: Install AdGuard with [TTeck's scrips](https://github.com/tteck/Proxmox). 
@@ -37,7 +37,7 @@ bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/ct/adguard-v3.s
 
 Select the advanced settings and specify **CT ID, Static IP with CIRD of /32 and the Gateway**.
 
-[![image.png](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/scaled-1680-/Cknimage.png)](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/Cknimage.png)
+[![image.png](/assets/img/posts/Cknimage.png)](/assets/img/posts/Cknimage.png)
 
 > ⚠️ Wait for AdGuard to install but **DO NOT** proceed with the Setup process at http://192.168.0.40:3000 yet!
 
@@ -52,7 +52,7 @@ Immediately install the Tailscale client in the AdGuard container. Again, use yo
 bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/misc/add-tailscale-lxc.sh)" -s 400
 ```
 
-[![image.png](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/scaled-1680-/eapimage.png)](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/eapimage.png)
+[![image.png](/assets/img/posts/eapimage.png)](/assets/img/posts/eapimage.png)
 
 As instructed, reboot the container.
 
@@ -69,13 +69,13 @@ tailscale up --accept-dns=false
 
 The flag `--accept-dns=false` will prevent Tailscale from forcing it's DNS configuration upon this client. This flag is applicable to any client that does not need to resolve domains via this AdGuard instance.
 
-You will be prompted to visit a Login screen at Tailscale.com where you will be authenticated against your Tailscale account and connected to your Tailnet. [![image.png](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/scaled-1680-/oyhimage.png)](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/oyhimage.png)
+You will be prompted to visit a Login screen at Tailscale.com where you will be authenticated against your Tailscale account and connected to your Tailnet. [![image.png](/assets/img/posts/oyhimage.png)](/assets/img/posts/oyhimage.png)
 
 A quick check of `ip addr` in the AdGuard container console before and after, shows the following:
 
-[Before connecting to Tailscale![image.png](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/scaled-1680-/mWGimage.png)](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/mWGimage.png)
+[Before connecting to Tailscale![image.png](/assets/img/posts/mWGimage.png)](/assets/img/posts/mWGimage.png)
 
-[After connecting to Tailscale. Notice we have an IP now - 100.71.104.26![image.png](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/scaled-1680-/lMBimage.png)](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/lMBimage.png)
+[After connecting to Tailscale. Notice we have an IP now - 100.71.104.26![image.png](/assets/img/posts/lMBimage.png)](/assets/img/posts/lMBimage.png)
 
 ###   
 
@@ -86,7 +86,7 @@ Now is the time to finish setting up AdGuard. Go to **http://192.168.0.40:3000**
 
 From the drop down you should see a new interface - **tailscale0**
 
-[![image.png](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/scaled-1680-/r1Kimage.png)](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/r1Kimage.png)
+[![image.png](/assets/img/posts/r1Kimage.png)](/assets/img/posts/r1Kimage.png)
 
 After this key step, everything else can be done as if you are setting up AdGuard normally. Proceed with user registration and so on.
 
@@ -121,9 +121,9 @@ dns:
 ...
 ```
 
-[Default Interface to listen to is your local network![image.png](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/scaled-1680-/nx1image.png)](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/nx1image.png)
+[Default Interface to listen to is your local network![image.png](/assets/img/posts/nx1image.png)](/assets/img/posts/nx1image.png)
 
-[Changed default Interface to Tailscale's network IP![image.png](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/scaled-1680-/ZAximage.png)](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/ZAximage.png)
+[Changed default Interface to Tailscale's network IP![image.png](/assets/img/posts/ZAximage.png)](/assets/img/posts/ZAximage.png)
 
 ###   
 
@@ -149,17 +149,17 @@ When you login in your [Tailscale Dashboard](https://login.tailscale.com/admin/m
 
 <details id="bkmrk-sample-list-of-conne"><summary>Sample list of connected clients</summary>
 
-![image.png](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/scaled-1680-/fchimage.png)
+![image.png](/assets/img/posts/fchimage.png)
 
 </details>Take note of the AdGuard (adscale) IP. From this point on, we will be working with IPs inside the Tailnet. These IPs start with 100.X.X.X.
 
 In the **DNS** Tab, under **Nameservers**, click **Add Nameserver** and choose **Custom...** Paste your AdGuard IP in the field.
 
-[![image.png](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/scaled-1680-/BUEimage.png)](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/BUEimage.png)
+[![image.png](/assets/img/posts/BUEimage.png)](/assets/img/posts/BUEimage.png)
 
 <p class="callout warning">To make sure **your\_domain.com** is resolved by your DNS server <span style="text-decoration: underline;"><span style="color: #000000; text-decoration: underline;">every time</span></span>, we want to force all of the traffic through the Tailnet. </p>
 
-[![image.png](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/scaled-1680-/AR5image.png)](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/AR5image.png)
+[![image.png](/assets/img/posts/AR5image.png)](/assets/img/posts/AR5image.png)
 
 Now, you might have noticed that there is an option called "Split DNS". If you enable it for **your\_domain.com** and go to **google.com**, Tailscale will not use your DNS to resolve it. It will only use it for **your\_domain.com.** But there lies a problem. You cannot have a "Split DNS" that resolves just one domain and "Override local DNS" because no other domain will be resolvable. Tailscale does not allow you to do that. If you want to enable "Split DNS", you have to provide at least one more DNS server - like Cloudflare's 1.1.1.1.
 
@@ -168,12 +168,12 @@ Now, you might have noticed that there is an option called "Split DNS". If you e
 
 #### Setting up DNS Rewrites in AdGuard
 
-[![image.png](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/scaled-1680-/141image.png)](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/141image.png)
+[![image.png](/assets/img/posts/141image.png)](/assets/img/posts/141image.png)
 
 Creating DNS rewrites in AdGuard is straightforward - go to the dashboard, then go to **Filters &gt; DNS Rewrite.** As I mentioned, we are working within the Tailscale network and therefore we are using Tailnet IPs. Take note of the server IP ("docker" in this case). It's **100.84.51.113**
 
 You have to add two records. The first one is for **your\_domain.com**, the second one is to point ANY subdomain of your **your\_domain.com** to the server with Wildcard (\*) symbol.
 
-[![image.png](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/scaled-1680-/ft6image.png)](https://docs.lan.tenekev.art/uploads/images/gallery/2022-07/ft6image.png)
+[![image.png](/assets/img/posts/ft6image.png)](/assets/img/posts/ft6image.png)
 
 Additionally, you can add whatever blocklists you want, in order to use AdGuard for its intended purpose - ad-blocking but within the Tailnet.
