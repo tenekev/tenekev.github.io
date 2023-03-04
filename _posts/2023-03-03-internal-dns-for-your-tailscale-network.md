@@ -64,13 +64,16 @@ tailscale up --accept-dns=false
 
 The flag `--accept-dns=false` will prevent Tailscale from forcing it's DNS configuration upon this client. This flag is applicable to any client that does not need to resolve domains via this AdGuard instance.
 
-You will be prompted to visit a Login screen at Tailscale.com where you will be authenticated against your Tailscale account and connected to your Tailnet. [![image.png](oyhimage.png)](oyhimage.png)
+You will be prompted to visit a Login screen at Tailscale.com where you will be authenticated against your Tailscale account and connected to your Tailnet. 
+![image.png](oyhimage.png)
 
 A quick check of `ip addr` in the AdGuard container console before and after, shows the following:
 
-[Before connecting to Tailscale![image.png](mWGimage.png)](mWGimage.png)
+Before connecting to Tailscale
+![image.png](mWGimage.png)
 
-[After connecting to Tailscale. Notice we have an IP now - 100.71.104.26![image.png](lMBimage.png)](lMBimage.png)
+After connecting to Tailscale. Notice we have an IP now - 100.71.104.26
+![image.png](lMBimage.png)
 
 ### Step 4: Configure AdGuard to respond to Tailscale
 
@@ -113,9 +116,11 @@ dns:
 ...
 ```
 
-[Default Interface to listen to is your local network![image.png](nx1image.png)](nx1image.png)
+Default Interface to listen to is your local network
+![image.png](nx1image.png)
 
-[Changed default Interface to Tailscale's network IP![image.png](ZAximage.png)](ZAximage.png)
+Changed default Interface to Tailscale's network IP
+![image.png](ZAximage.png)
 
 ---
 
