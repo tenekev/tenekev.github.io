@@ -42,7 +42,8 @@ Select the advanced settings and specify **CT ID, Static IP with CIRD of /32 and
 
 ![image.png](Cknimage.png)
 
-> Wait for AdGuard to install but **DO NOT** proceed with the Setup process at http://192.168.0.40:3000 yet!{: .prompt-warning }
+> Wait for AdGuard to install but **DO NOT** proceed with the Setup process at http://192.168.0.40:3000 yet!
+{: .prompt-warning }
 
 ### Step 2: Install Tailscale with [TTeck's scrips](https://github.com/tteck/Proxmox). 
 
@@ -87,9 +88,11 @@ From the drop down you should see a new interface - **tailscale0**
 
 After this key step, everything else can be done as if you are setting up AdGuard normally. Proceed with user registration and so on.
 
-> If, for whatever reason, you don't see the **tailscale0** interface, reboot the AdGuard container.{: .prompt-warning }
+> If, for whatever reason, you don't see the **tailscale0** interface, reboot the AdGuard container.
+{: .prompt-warning }
 
-> If you have finished the AdGuard setup and chose an interface before setting up Tailscale, you will have to **edit AdGuard's configuration file manually**.{: .prompt-info }
+> If you have finished the AdGuard setup and chose an interface before setting up Tailscale, you will have to **edit AdGuard's configuration file manually**.
+{: .prompt-info }
 
 #### Resetting AdGuard's configuration:
 
@@ -126,7 +129,8 @@ Changed default Interface to Tailscale's network IP
 
 ---
 
-> At this point you should have a working AdGuard that responds to DNS queries from your Tailnet. However AdGuard is **still not the default DNS server** for the Tailnet and also it has **no DNS rewrite rules** to point clients to your reverse proxy!{: .prompt-tip }
+> At this point you should have a working AdGuard that responds to DNS queries from your Tailnet. However AdGuard is **still not the default DNS server** for the Tailnet and also it has **no DNS rewrite rules** to point clients to your reverse proxy!
+{: .prompt-tip }
 
 ---
 
@@ -154,7 +158,8 @@ In the **DNS** Tab, under **Nameservers**, click **Add Nameserver** and choose *
 
 ![image.png](BUEimage.png)
 
-> To make sure **your\_domain.com** is resolved by your DNS server _**every time**_, we want to force all of the traffic through the Tailnet.{: .prompt-warning }
+> To make sure **your\_domain.com** is resolved by your DNS server _**every time**_, we want to force all of the traffic through the Tailnet.
+{: .prompt-warning }
 
 ![image.png](AR5image.png)
 
