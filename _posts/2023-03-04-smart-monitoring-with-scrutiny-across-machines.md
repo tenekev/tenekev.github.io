@@ -12,15 +12,15 @@ image:
 # S.M.A.R.T. Monitoring with Scrutiny across machines
 
 
-#### 🤔 The problem:
+### 🤔 The problem:
 Scrutiny offers a nice Docker package called "Omnibus" that can monitor HDDs attached to a Docker host with relative ease. Scrutiny can also be installed in a Hub-Spoke layout where Web interface, Database and Collector come in 3 separate packages. The official documentation assumes that the spokes in the "Hub-Spokes layout" run Docker, which is not always the case. The third approach is to install Scrutiny manually, entirely outside of Docker.
 
 
-#### 💡 The solution:
+### 💡 The solution:
 This tutorial provides a hybrid configuration where the Hub lives in a Docker instance while the spokes have only Scrutiny Collector installed manually. The Collector periodically send data to the Hub. It's not mind-boggling hard to understand but someone might struggle with the setup. This is for them.
 
 
-#### 🖥️ My setup:
+### 🖥️ My setup:
 I have a Proxmox cluster where one VM runs Docker and all monitoring services - Grafana, Prometheus, various exporters, InfluxDb and so forth. Another VM runs the NAS - OpenMediaVault v6, where all hard drives reside. The Scrutiny Collector is triggered every 30min to collect data on the drives. The data is sent to the Docker VM, running InfluxDB.
 
 
@@ -28,7 +28,7 @@ I have a Proxmox cluster where one VM runs Docker and all monitoring services - 
 
 ![image.png](drawing-3-1671744714.png)
 
-### Setting up the Hub
+## Setting up the Hub
 
 The Hub consists of Scrutiny Web - a web interface for viewing the SMART data. And InfluxDB, where the smartmon data is stored.
 
@@ -96,7 +96,7 @@ A freshly initialized Scrutiny instance can be accessed on port 8080, eg. `192.1
 
 ![image.png](drawing-3-1671744208.png)
 
-### Setting up a Spoke ***without*** Docker
+## Setting up a Spoke ***without*** Docker
 
 A spoke consists of the Scrutiny Collector binary that is run on a set interval via crontab and sends the data to the Hub. The official documentation [describes the manual setup of the Collector](https://github.com/AnalogJ/scrutiny/blob/master/docs/INSTALL_MANUAL.md#collector) - dependencies and step by step commands. I have a shortened version that does the same thing but in one line of code.
 
@@ -138,7 +138,7 @@ The Collector has its own independent config file that lives in `/opt/scrutiny/c
 
 ![image.png](drawing-3-1671744277.png)
 
-### Setting up a Spoke ***with*** Docker
+## Setting up a Spoke ***with*** Docker
 
 Setting up a remote Spoke in Docker requires you to split the [official Hub-Spoke layout docker-compose.yml](https://github.com/AnalogJ/scrutiny/blob/master/docker/example.hubspoke.docker-compose.yml). In the following docker-compose you need to provide the `${API_ENDPOINT}`, in my case `http://192.168.0.100:8080`. Also all drives that you wish to monitor need to be presented to the container under `devices`.
 
