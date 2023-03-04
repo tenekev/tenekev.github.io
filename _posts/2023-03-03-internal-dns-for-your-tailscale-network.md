@@ -1,6 +1,6 @@
 ---
 title: How to set up your own DNS for a whole Tailscale network
-date: 2023-03-03 11:58:00 +300
+date: 2023-03-03 23:58:00 +300
 categories: [homelab, networking, tutorial]
 tags: [tailscale,adguard,pihole,dns,vpn,wireguard,adblock,proxmox]
 img_path: /posts/2023-03-03-internal-dns-for-your-tailscale-network/
