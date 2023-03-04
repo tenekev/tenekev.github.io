@@ -5,13 +5,12 @@ categories: [monitoring, homelab, tutorial]
 tags: [scrutiny, docker, synology, nas]
 img_path: /posts/2023-03-04-smart-monitoring-with-scrutiny-across-machines/
 image:
-  path: drawing-3-1671744407.png
+  path: drawing-3-1677941406.png
   #alt: Article Header
 ---
 
 # S.M.A.R.T. Monitoring with Scrutiny across machines
 
-![image.png](drawing-3-1671744407.png)
 
 #### 🤔 The problem:
 Scrutiny offers a nice Docker package called "Omnibus" that can monitor HDDs attached to a Docker host with relative ease. Scrutiny can also be installed in a Hub-Spoke layout where Web interface, Database and Collector come in 3 separate packages. The official documentation assumes that the spokes in the "Hub-Spokes layout" run Docker, which is not always the case. The third approach is to install Scrutiny manually, entirely outside of Docker.
