@@ -56,7 +56,7 @@ layout: page
       {% endcapture %}
 
       <div class="col-md-3 col-sm-12 d-flex align-items-center justify-content-center overflow-hidden">
-        <img {{ src }} {{ class }} {{ alt }} style="" {{ lqip | strip }}>
+        <img {{ src }} {{ class }} {{ alt }} {{ lqip | strip }}>
       </div>
     {% endif %}
     
@@ -64,7 +64,6 @@ layout: page
       
       <h1>
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-
       </h1>
 
       <div class="post-content">
