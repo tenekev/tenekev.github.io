@@ -4,11 +4,12 @@ date: 2023-03-03 11:58:00 +300
 categories: [homelab, networking, tutorial]
 tags: [tailscale,adguard,pihole,dns,vpn,wireguard,adblock,proxmox]
 img_path: /posts/2023-03-03-internal-dns-for-your-tailscale-network/
+image:
+  path: drawing-3-1671877554.png
+  alt: Article Header
 ---
 
 # Setting up Internal DNS
-
-[![image.png](drawing-3-1671877554.png)](drawing-3-1671877554.png)
 
 #### 📝 Notes:
 
@@ -42,9 +43,6 @@ Select the advanced settings and specify **CT ID, Static IP with CIRD of /32 and
 
 > ⚠️ Wait for AdGuard to install but **DO NOT** proceed with the Setup process at http://192.168.0.40:3000 yet!
 
-###   
-
-
 ### Step 2: Install Tailscale with [TTeck's scrips](https://github.com/tteck/Proxmox). 
 
 Immediately install the Tailscale client in the AdGuard container. Again, use your **Proxmox host console** to execute the command. You have to specify the **CT ID** of the AdGuard container you just created. In my case it's 400
@@ -56,9 +54,6 @@ bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/misc/add-tailsc
 [![image.png](eapimage.png)](eapimage.png)
 
 As instructed, reboot the container.
-
-###   
-
 
 ### Step 3: Connect the Tailscale client to your Tailnet
 
@@ -77,9 +72,6 @@ A quick check of `ip addr` in the AdGuard container console before and after, sh
 [Before connecting to Tailscale![image.png](mWGimage.png)](mWGimage.png)
 
 [After connecting to Tailscale. Notice we have an IP now - 100.71.104.26![image.png](lMBimage.png)](lMBimage.png)
-
-###   
-
 
 ### Step 4: Configure AdGuard to respond to Tailscale
 
@@ -157,9 +149,6 @@ In the **DNS** Tab, under **Nameservers**, click **Add Nameserver** and choose *
 [![image.png](AR5image.png)](AR5image.png)
 
 Now, you might have noticed that there is an option called "Split DNS". If you enable it for **your\_domain.com** and go to **google.com**, Tailscale will not use your DNS to resolve it. It will only use it for **your\_domain.com.** But there lies a problem. You cannot have a "Split DNS" that resolves just one domain and "Override local DNS" because no other domain will be resolvable. Tailscale does not allow you to do that. If you want to enable "Split DNS", you have to provide at least one more DNS server - like Cloudflare's 1.1.1.1.
-
-###   
-
 
 #### Setting up DNS Rewrites in AdGuard
 
