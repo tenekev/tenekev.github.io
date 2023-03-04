@@ -42,7 +42,7 @@ Select the advanced settings and specify **CT ID, Static IP with CIRD of /32 and
 
 ![image.png](Cknimage.png)
 
-> ⚠️ Wait for AdGuard to install but **DO NOT** proceed with the Setup process at http://192.168.0.40:3000 yet!
+> Wait for AdGuard to install but **DO NOT** proceed with the Setup process at http://192.168.0.40:3000 yet!{: .prompt-warning }
 
 ### Step 2: Install Tailscale with [TTeck's scrips](https://github.com/tteck/Proxmox). 
 
@@ -87,9 +87,9 @@ From the drop down you should see a new interface - **tailscale0**
 
 After this key step, everything else can be done as if you are setting up AdGuard normally. Proceed with user registration and so on.
 
-> ⚠️ If, for whatever reason, you don't see the **tailscale0** interface, reboot the AdGuard container.
+> If, for whatever reason, you don't see the **tailscale0** interface, reboot the AdGuard container.{: .prompt-warning }
 
-> ℹ️ If you have finished the AdGuard setup and chose an interface before setting up Tailscale, you will have to **edit AdGuard's configuration file manually**.
+> If you have finished the AdGuard setup and chose an interface before setting up Tailscale, you will have to **edit AdGuard's configuration file manually**.{: .prompt-info }
 
 #### Resetting AdGuard's configuration:
 
@@ -126,7 +126,7 @@ Changed default Interface to Tailscale's network IP
 
 ---
 
-> ✅ At this point you should have a working AdGuard that responds to DNS queries from your Tailnet. However AdGuard is **still not the default DNS server** for the Tailnet and also it has **no DNS rewrite rules** to point clients to your reverse proxy!
+> At this point you should have a working AdGuard that responds to DNS queries from your Tailnet. However AdGuard is **still not the default DNS server** for the Tailnet and also it has **no DNS rewrite rules** to point clients to your reverse proxy!{: .prompt-tip }
 
 ---
 
@@ -140,17 +140,21 @@ When you login in your [Tailscale Dashboard](https://login.tailscale.com/admin/m
 * The server running the reverse-proxy (with hostname "docker" in this case)
 * Other clients you own
 
-<details id="bkmrk-sample-list-of-conne"><summary>Sample list of connected clients</summary>
+<details id="bkmrk-sample-list-of-conne">
 
-![image.png](fchimage.png)
+  <summary>Sample list of connected clients</summary>
 
-</details>Take note of the AdGuard (adscale) IP. From this point on, we will be working with IPs inside the Tailnet. These IPs start with 100.X.X.X.
+  ![image.png](fchimage.png)
+
+</details>
+
+Take note of the AdGuard (adscale) IP. From this point on, we will be working with IPs inside the Tailnet. These IPs start with 100.X.X.X.
 
 In the **DNS** Tab, under **Nameservers**, click **Add Nameserver** and choose **Custom...** Paste your AdGuard IP in the field.
 
 ![image.png](BUEimage.png)
 
-<p class="callout warning">To make sure **your\_domain.com** is resolved by your DNS server <span style="text-decoration: underline;"><span style="color: #000000; text-decoration: underline;">every time</span></span>, we want to force all of the traffic through the Tailnet. </p>
+> To make sure **your\_domain.com** is resolved by your DNS server _**every time**_, we want to force all of the traffic through the Tailnet.{: .prompt-warning }
 
 ![image.png](AR5image.png)
 
