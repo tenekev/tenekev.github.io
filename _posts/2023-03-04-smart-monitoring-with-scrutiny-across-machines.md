@@ -1,7 +1,7 @@
 ---
 title: S.M.A.R.T. Monitoring with Scrutiny across machines
 date: 2023-03-04 11:58:00 +300
-categories: [monitoring, homelab, tutorial]
+categories: [homelab, monitoring, tutorial]
 tags: [scrutiny, docker, synology, nas]
 img_path: /posts/2023-03-04-smart-monitoring-with-scrutiny-across-machines/
 image:
