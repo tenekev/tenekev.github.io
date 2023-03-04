@@ -7,6 +7,8 @@ img_path: /posts/2023-03-04-smart-monitoring-with-scrutiny-across-machines/
 image:
   path: drawing-3-1677941406.png
   #alt: Article Header
+thumb:
+  path: drawing-3-1671744277-th.png
 ---
 
 # S.M.A.R.T. Monitoring with Scrutiny across machines
