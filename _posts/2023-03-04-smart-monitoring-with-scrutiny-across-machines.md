@@ -14,15 +14,15 @@ thumb:
 # S.M.A.R.T. Monitoring with Scrutiny across machines
 
 
-### 🤔 The problem:
+### he problem 🤔
 Scrutiny offers a nice Docker package called "Omnibus" that can monitor HDDs attached to a Docker host with relative ease. Scrutiny can also be installed in a Hub-Spoke layout where Web interface, Database and Collector come in 3 separate packages. The official documentation assumes that the spokes in the "Hub-Spokes layout" run Docker, which is not always the case. The third approach is to install Scrutiny manually, entirely outside of Docker.
 
 
-### 💡 The solution:
+### The solution 💡
 This tutorial provides a hybrid configuration where the Hub lives in a Docker instance while the spokes have only Scrutiny Collector installed manually. The Collector periodically send data to the Hub. It's not mind-boggling hard to understand but someone might struggle with the setup. This is for them.
 
 
-### 🖥️ My setup:
+### My setup 🖥️
 I have a Proxmox cluster where one VM runs Docker and all monitoring services - Grafana, Prometheus, various exporters, InfluxDb and so forth. Another VM runs the NAS - OpenMediaVault v6, where all hard drives reside. The Scrutiny Collector is triggered every 30min to collect data on the drives. The data is sent to the Docker VM, running InfluxDB.
 
 
