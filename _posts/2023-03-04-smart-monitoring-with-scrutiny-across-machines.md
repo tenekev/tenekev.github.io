@@ -14,19 +14,19 @@ thumb:
 # S.M.A.R.T. Monitoring with Scrutiny across machines
 
 ### The problem 🤔
-Scrutiny offers a nice Docker package called "Omnibus" that can monitor HDDs attached to a Docker host with relative ease. Scrutiny can also be installed in a Hub-Spoke layout where Web interface, Database and Collector come in 3 separate packages. The official documentation assumes that the spokes in the "Hub-Spokes layout" run Docker, which is not always the case. The third approach is to install Scrutiny manually, entirely outside of Docker.
+Scrutiny offers a nice Docker package called "Omnibus" that can monitor HDDs attached to the same Docker host with relative ease. _What happens when those HDDs are on another machine?_ In this case Scrutiny can be installed in a Hub-Spoke layout where Web interface, Database and Collector are 3 separate containers. The official documentation assumes that the both the **Hub** and the **Spokes** will be run in Docker, which is not always the case. _What happens when the spokes aren't running Docker? How do you collect the data?_
 
----
+###### .
 
 ### The solution 💡
-This tutorial provides a hybrid configuration where the Hub lives in a Docker instance while the spokes have only Scrutiny Collector installed manually. The Collector periodically send data to the Hub. It's not mind-boggling hard to understand but someone might struggle with the setup. This is for them.
+This tutorial provides a hybrid configuration where the **Hub** lives in a Docker instance while the __Spokes__ have only the Collector installed as a binary. The Collector periodically sends data to the Hub. If you have multiple spokes, you can even mix Collectors that run in Docker and some that run as binaries. It's not mind-boggling hard to understand but someone might struggle with the setup. This is for them.
 
----
+###### .
 
 ### My setup 🖥️
-I have a Proxmox cluster where one VM runs Docker and all monitoring services - Grafana, Prometheus, various exporters, InfluxDb and so forth. Another VM runs the NAS - OpenMediaVault v6, where all hard drives reside. The Scrutiny Collector is triggered every 30min to collect data on the drives. The data is sent to the Docker VM, running InfluxDB.
+I have a Proxmox cluster where one VM runs Docker and all monitoring services - Grafana, Prometheus, various exporters, InfluxDb as containers. Another VM runs the NAS - OpenMediaVault v6, where all hard drives reside. The Scrutiny Collector binary on the OMV6 VM is triggered every 30min to collect data on the drives. The data is then sent to the Docker VM, running InfluxDB and Scrutiny Web.
 
----
+###### .
 
 ![image.png](drawing-3-1671744714.png)
 
