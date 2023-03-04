@@ -125,17 +125,11 @@ dns:
 
 [Changed default Interface to Tailscale's network IP![image.png](/assets/img/posts/ZAximage.png)](/assets/img/posts/ZAximage.png)
 
-###   
-
-
 ---
 
 > ✅ At this point you should have a working AdGuard that responds to DNS queries from your Tailnet. However AdGuard is **still not the default DNS server** for the Tailnet and also it has **no DNS rewrite rules** to point clients to your reverse proxy!
 
 ---
-
-###   
-
 
 ### Step 5: Connecting everything
 
