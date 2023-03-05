@@ -5,10 +5,10 @@ categories: [homelab, monitoring, tutorial]
 tags: [scrutiny, docker, synology, nas]
 img_path: /posts/2023-03-04-smart-monitoring-with-scrutiny-across-machines/
 image:
-  path: drawing-3-1677941406.png
+  path: header.drawio.png
   #alt: Article Header
 thumb:
-  path: drawing-3-1671744277-th.png
+  path: thumb.drawio.png
 ---
 
 # S.M.A.R.T. Monitoring with Scrutiny across machines
@@ -28,7 +28,7 @@ I have a Proxmox cluster where one VM runs Docker and all monitoring services - 
 
 ###### .
 
-![image.png](drawing-3-1671744714.png)
+![Setting up the HUB](hub.drawio.png)
 
 ## Setting up the Hub
 
@@ -96,7 +96,7 @@ A freshly initialized Scrutiny instance can be accessed on port 8080, eg. `192.1
 
 ---
 
-![image.png](drawing-3-1671744208.png)
+![Spoke without Docker](spoke-no-docker.drawio.png)
 
 ## Setting up a Spoke ***without*** Docker
 
@@ -139,7 +139,7 @@ The Collector has its own independent config file that lives in `/opt/scrutiny/c
 
 ---
 
-![image.png](drawing-3-1671744277.png)
+![Spoke with Docker](spoke-docker.drawio.png)
 
 ## Setting up a Spoke ***with*** Docker
 

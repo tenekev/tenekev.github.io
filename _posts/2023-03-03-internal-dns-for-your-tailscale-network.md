@@ -5,10 +5,10 @@ categories: [homelab, networking, tutorial]
 tags: [tailscale,adguard,pihole,dns,vpn,wireguard,adblock,proxmox]
 img_path: /posts/2023-03-03-internal-dns-for-your-tailscale-network/
 image:
-  path: drawing-3-1671877554.png
+  path: header.drawio.png
   #alt: Article Header
 thumb:
-  path: drawing-3-1671877554-th.png
+  path: thumb.drawio.png
 ---
 
 # Setting up Internal DNS
