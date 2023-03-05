@@ -14,6 +14,3 @@ I am a proactive learner who is never satisfied with the status quo, and I am al
 I have dabbled into many aspects of the IT world - Programming, UI Design, Hardware, Selfhosting, Networking, Virtualization and Automation.
 
 Whether working on personal projects or collaborating with others, I bring a strong sense of curiosity, determination, and dedication to everything I do. I am confident that my passion and skills in technology, networking, and self-hosting make me an asset to any team or organization. I am eager to bring my passion and expertise to any organization that shares my enthusiasm for technology.
-
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
