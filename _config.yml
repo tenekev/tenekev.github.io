@@ -5,13 +5,12 @@ theme: jekyll-theme-chirpy
 
 # Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
 # and doesn't have a custom domain.
-baseurl: ''
+baseurl: ""
 
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
 lang: en
-
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
 timezone: Europe/Sofia
@@ -19,18 +18,18 @@ timezone: Europe/Sofia
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Memento Homelab                          # the main title
+title: Memento Homelab # the main title
 
 tagline: Complex concepts for simple people that forget often  # it will display as the sub-title
 
-description: >-                        # used by seo meta and the atom feed
+description: >- # used by seo meta and the atom feed
   This is the place I write detailed documentation for myself as if I'm another person. Because 3 months down the line, you bet I'm not gonna remmeber I even wrote it.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: 'https://tenekev.art'
+url: "https://tenekev.art"
 
 github:
-  username: tenekev             # change to your github username
+  username: tenekev # change to your github username
 
 #twitter:
 #  username: twitter_username            # change to your twitter username
@@ -39,15 +38,15 @@ social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Radoslav Tenekev
-  #email: example@domain.com             # change to your email address
+  #email: example@domain.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    #- https://twitter.com/      # change to your twitter homepage
-    - https://github.com/tenekev       # change to your github homepage
+    #- https://twitter.com/ # change to your twitter homepage
+    - https://github.com/tenekev # change to your github homepage
     # - https://www.facebook.com/username
     - https://www.linkedin.com/in/radoslav-tenekev
 
-google_site_verification:               # fill in to your verification string
+google_site_verification: # fill in to your verification string
 
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
@@ -70,7 +69,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode:   # [light|dark]
+theme_mode: # [light|dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
@@ -144,7 +143,7 @@ collections:
 
 defaults:
   - scope:
-      path: ''          # An empty string here means all files in the project
+      path: ""          # An empty string here means all files in the project
       type: posts
     values:
       layout: post
@@ -158,7 +157,7 @@ defaults:
     values:
       comments: false
   - scope:
-      path: ''
+      path: ""
       type: tabs             # see `site.collections`
     values:
       layout: page
@@ -191,13 +190,13 @@ compress_html:
     envs: [development]
 
 exclude:
-  - '*.gem'
-  - '*.gemspec'
+  - "*.gem"
+  - "*.gemspec"
   - tools
   - README.md
   - CHANGELOG.md
   - LICENSE
-  - gulpfile.js
+  - rollup.config.js
   - node_modules
   - package*.json
 
