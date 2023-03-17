@@ -1730,3 +1730,67 @@ $sidebar-display: "sidebar-display";
     } /* .sidebar-bottom */
   } /* #sidebar */
 } /* min-width: 1650px */
+
+
+/* Project Cards */
+
+.project-cardd {
+  font-size: 0.8rem;
+  background-color: var(--main-bg);
+
+  a {
+    @extend %text-color;
+
+    &:link {
+      @include no-text-decoration;
+    }
+
+    &:hover {
+      @extend %link-hover;
+      @include no-text-decoration;
+    }
+  }
+
+}
+
+.project-card {
+
+  display: block;
+  /*width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  border: 2px solid rgba(222, 222, 222, 0.7);*/
+  overflow: hidden;
+
+  background-color: var(--card-bg);
+
+  .card-img-top img {
+    width: 100%;
+    height: 100%;
+    transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
+
+    &:hover {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+    }
+  }
+  .project-card .card-img-top:hover img {transform: scale(1.2);}
+  a {
+    @extend %clickable-transition;
+    color: rgba(134, 133, 133, 0.99);
+
+    &:hover {
+      @include no-text-decoration;
+      color: var(--sidebar-active-color);
+    }
+
+    :after:hover {
+      .project-card .card-img-top:hover img {transform: scale(1.2);}
+    }
+
+  }
+
+}
+

@@ -43,7 +43,7 @@ layout: page
 {% for post in posts %}
 
   <div class="post-preview row">
-
+    <div class="col-md-3 col-sm-12 d-flex align-items-center justify-content-center overflow-hidden">
     {% if post.thumb %}
       {% capture src %}src="{{ site.img_cdn | append: post.img_path | append: post.thumb.path | relative_url }}"{% endcapture %}
       {% capture class %}class="rounded img-fluid max-height mb-2"{% endcapture %}
@@ -54,18 +54,15 @@ layout: page
           lqip="{{ post.thumb.lqip }}"
         {% endif %}
       {% endcapture %}
-
-      <div class="col-md-3 col-sm-12 d-flex align-items-center justify-content-center overflow-hidden">
-        <img {{ src }} {{ class }} {{ alt }} {{ lqip | strip }}>
-      </div>
+      <img {{ src }} {{ class }} {{ alt }} {{ lqip | strip }}>
     {% endif %}
-    
+    </div>
     <div class="col-md-9 col-sm-12">
       
-      <h1>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </h1>
-
+      <a href="{{ post.url | relative_url }}" class="stretched-link">
+        <h1 style="color: var(--link-color)">{{ post.title }}</h1>
+      </a>
+      
       <div class="post-content">
         <p>
           {% include no-linenos.html content=post.content %}

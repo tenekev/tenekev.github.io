@@ -18,15 +18,17 @@ layout: default
 
       <h1 class="dynamic-title">{{ title }}</h1>
       
-      <div class="post-content row">
+      <div class="row">
 
       {% for project in site.projects %}
-        <div class="col-3 col-sm-12 col-md-6 col-lg-4 col-xl-4 text-primary p-2">
-          <div class="card" style="background-color: var(--card-bg)">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 text-primary p-2">
+          <div class="card project-card">
             {% capture src %}src="{{ site.img_cdn | append: project.img_path | append: project.thumb.path | relative_url }}"{% endcapture %}
             {% capture alt %}alt="{{ project.thumb.alt | default: "Project thumbnail" }}"{% endcapture %}
-
-            <img class="card-img-top" {{ src }} {{ alt }}>
+            <a class="stretched-link card-img-top" href="{{ project.url }}">
+              <img  {{ src }} {{ alt }}>
+            </a>
+            
 
             <div class="card-body p-3">
               <h5 class="card-title my-2">{{ project.title }}</h5>
@@ -36,9 +38,10 @@ layout: default
               </p>
             </div>
 
-            <a class="btn btn-outline-secondary btn-sm stretched-link mx-5" href="{{ project.url }}">View</a>
+
 
             <div class="card-footer py-1 px-3">
+              <span>Read more...</span>
               <!-- categories -->
               {% if project.categories.size > 0 %}
                 <i class="far fa-folder-open fa-fw"></i>
@@ -50,6 +53,7 @@ layout: default
                 </span>
               {% endif %}
             </div>
+
           </div>
         </div>
       {% endfor %}
