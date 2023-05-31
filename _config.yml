@@ -20,7 +20,7 @@ timezone: Europe/Sofia
 
 title: Memento Homelab # the main title
 
-tagline: Complex concepts for simple people that forget often  # it will display as the sub-title
+tagline: I need a job.  # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   This is the place I write detailed documentation for myself as if I'm another person. Because 3 months down the line, you bet I'm not gonna remmeber I even wrote it.
