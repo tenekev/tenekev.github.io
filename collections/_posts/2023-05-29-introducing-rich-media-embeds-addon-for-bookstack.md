@@ -104,7 +104,9 @@ Here is how the **Custom HTML Head Content** will look:
 
 Once you open the editor, you should see this in your toolbar:
 
-![image.png](image.png) are ready to start posting links for beautiful embeds.
+![image.png](image.png) 
+
+You are ready to start posting links for beautiful embeds.
 
 ## ⚙️ How does RME work?
 
