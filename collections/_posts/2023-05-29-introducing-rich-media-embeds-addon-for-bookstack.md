@@ -30,9 +30,28 @@ This first version of Rich Media Embeds focuses on **links**. You click a button
 - Stored into BookStack's storage
 - Completely decoupled from the backend
 
+## ⚙️ How does RME work?
+
+Upon loading the WYSIWYG editor, a button is hooked into the toolbar - `{;}`. From there you can posts URLs that need to be enriched. When you submit an URL, RME inserts a blank link object into the page and awaits for another function to fetch the URL data. RME relies on two types of data. Most modern sites supply [ OpenGraph](https://ogp.me/) meta tags with `og:title`, `og:description` and `og:image`. If these aren't present, it fetches the `<title>`, `<meta property="description">` and the biggest image off the page.
+
+Since everything is done client-side, fetching resources from other domains is an issue. Browsers enforce [Same-Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) and normally what we want to do - fetch another page &amp; its resources, throws a [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) error. To alleviate this issue, RME relays on a CORS Proxy - [CORS-Anywhere](https://github.com/Rob--W/cors-anywhere). You can add a public one if you find one, but we will go over how to set up a private one in Docker.
+
+Once the resources are fetched, RME can begin generating the image. A hidden DOM element is attached to the page where the card is stylized with CSS. Then the HTML DOM element is turned into an SVG, which is turned into a `<canvas>`, which is turned into a base64 string. This metamorphosis is handled by a library called [html2canvas](https://github.com/niklasvh/html2canvas). It sounds convoluted but it's actually the best way to leverage browser rendering into image creation. The base64 string is embedded into the blank link object that was created in the beginning of this madness and you see a neat image like this:
+
+[![https://realpython.com/tutorials/docker/](embedded-image-uh2tjsf0.jpeg)](https://realpython.com/tutorials/docker/)
+
+But why do we need a base64 string? Well because when you save a page in BookStack, it checks the content for embedded base64 strings and uploads them as images into its storage automatically. No need to upload images manually, no API calls, no backend edits. We leverage Bookstack's functionality, thus generating a card for our link. Neat, huh?
+
+## ⛓️ Dependencies
+
+- Bookstack (obviously)
+- [TinyMCE](https://www.tiny.cloud/) - The Bookstack WYSIWYG editor
+- [CORS-Anywhere Docker image by testcab](https://github.com/testcab/docker-cors-anywhere)
+- [html2canvas project by niklasvh](https://github.com/niklasvh/html2canvas)
+
 ## 📦 How to install Rich Media Embeds addon
 
-RME is designed to run entirely client-side but this comes with its limitations. If you want to understand why, read the next section on how does it work. The setup process is two-part.
+RME is designed to run entirely client-side but this comes with its limitations. The setup process is two-part.
 
 ### 1. Setting up[ CORS-Anywhere](https://github.com/Rob--W/cors-anywhere) service:
 
@@ -107,25 +126,6 @@ Once you open the editor, you should see this in your toolbar:
 ![image.png](image.png) 
 
 You are ready to start posting links for beautiful embeds.
-
-## ⚙️ How does RME work?
-
-Upon loading the WYSIWYG editor, a button is hooked into the toolbar - `{;}`. From there you can posts URLs that need to be enriched. When you submit an URL, RME inserts a blank link object into the page and awaits for another function to fetch the URL data. RME relies on two types of data. Most modern sites supply [ OpenGraph](https://ogp.me/) meta tags with `og:title`, `og:description` and `og:image`. If these aren't present, it fetches the `<title>`, `<meta property="description">` and the biggest image off the page.
-
-Since everything is done client-side, fetching resources from other domains is an issue. Browsers enforce [Same-Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) and normally what we want to do - fetch another page &amp; its resources, throws a [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) error. To alleviate this issue, RME relays on a CORS Proxy - [CORS-Anywhere](https://github.com/Rob--W/cors-anywhere). You can add a public one if you find one, but we will go over how to set up a private one in Docker.
-
-Once the resources are fetched, RME can begin generating the image. A hidden DOM element is attached to the page where the card is stylized with CSS. Then the HTML DOM element is turned into an SVG, which is turned into a `<canvas>`, which is turned into a base64 string. This metamorphosis is handled by a library called [html2canvas](https://github.com/niklasvh/html2canvas). It sounds convoluted but it's actually the best way to leverage browser rendering into image creation. The base64 string is embedded into the blank link object that was created in the beginning of this madness and you see a neat image like this:
-
-[![https://realpython.com/tutorials/docker/](embedded-image-uh2tjsf0.jpeg)](https://realpython.com/tutorials/docker/)
-
-But why do we need a base64 string? Well because when you save a page in BookStack, it checks the content for embedded base64 strings and uploads them as images into its storage automatically. No need to upload images manually, no API calls, no backend edits. We leverage Bookstack's functionality, thus generating a card for our link. Neat, huh?
-
-## ⛓️ Dependencies
-
-- Bookstack (obviously)
-- [TinyMCE](https://www.tiny.cloud/) - The Bookstack WYSIWYG editor
-- [CORS-Anywhere Docker image by testcab](https://github.com/testcab/docker-cors-anywhere)
-- [html2canvas project by niklasvh](https://github.com/niklasvh/html2canvas)
 
 ## Examples of RME cards from different sites
 
