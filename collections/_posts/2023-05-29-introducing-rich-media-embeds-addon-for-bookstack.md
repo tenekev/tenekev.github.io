@@ -60,7 +60,7 @@ It's tempting to put both containers on the same docker network and try to use `
 Bookstack conveniently allows for the injection of custom code in the `<head>` element of the site. **Settings &gt; Customization &gt; Custom HTML Head Content**.
 
 **The simplest approach** is to just copy the contents of addon-rich-media-embeds.js, html2canvas.min.js and styles.css in respective `<script>` and `<style>` tags. 
-Here is code.
+[Here is the code](https://github.com/tenekev/bookstack-rich-media-embeds/blob/main/head-simple.html).
 However, it introduces a lot of lines of code that is hard to manage.
 
 **The better approach** is to link these files from your filesystem. Here is how to place them in Bookstack's `/config/www/uploads/` directory. This will serve them with the rest of Bookstack's files.
@@ -104,7 +104,7 @@ Here is how the **Custom HTML Head Content** will look:
 
 Once you open the editor, you should see this in your toolbar:
 
-[![image.png](image.png)](image.png)You are ready to start posting links for beautiful embeds.
+![image.png](image.png) are ready to start posting links for beautiful embeds.
 
 #### ⚙️ How does RME work?
 
