@@ -26,7 +26,7 @@ description: >- # used by seo meta and the atom feed
   This is the place I write detailed documentation for myself as if I'm another person. Because 3 months down the line, you bet I'm not gonna remmeber I even wrote it.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: "https://tenekev.art"
+url: "https://tenekev.com"
 
 github:
   username: tenekev # change to your github username
